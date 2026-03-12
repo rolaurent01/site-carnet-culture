@@ -12,7 +12,7 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <main className="pt-28 pb-20">
+    <main className="pt-40 pb-20">
       <div className="mx-auto max-w-5xl px-5 md:px-8">
         <ScrollReveal>
           <SectionTitle subtitle="Laissez-nous vos coordonnées, nous vous recontacterons pour organiser une présentation de l'application.">
