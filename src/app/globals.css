@@ -248,3 +248,140 @@ body {
 .mockup-notif {
   animation: notif-pop 6s ease-out infinite;
 }
+
+/* ── App Demo animations ── */
+
+/* Field appears with slide up */
+@keyframes demo-field-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.demo-field-appear {
+  opacity: 0;
+  animation: demo-field-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Typing reveal */
+@keyframes demo-type {
+  from { max-width: 0; }
+  to { max-width: 100px; }
+}
+
+.demo-typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  animation: demo-type 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Button glow pulse */
+@keyframes demo-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(58, 90, 64, 0); }
+  50% { box-shadow: 0 0 12px 4px rgba(58, 90, 64, 0.15); }
+}
+
+.demo-btn-glow {
+  animation: demo-glow 2s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Plant grow */
+@keyframes demo-grow {
+  from { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+  to { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+}
+
+.demo-plant-grow {
+  opacity: 0;
+  animation: demo-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sync dot travel */
+@keyframes demo-dot-travel {
+  0% { left: 0; opacity: 0; transform: translateY(-50%) scale(0.5); }
+  10% { opacity: 1; transform: translateY(-50%) scale(1); }
+  90% { opacity: 1; transform: translateY(-50%) scale(1); }
+  100% { left: calc(100% - 12px); opacity: 0; transform: translateY(-50%) scale(0.5); }
+}
+
+.demo-sync-dot {
+  animation: demo-dot-travel 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Sync center pulse */
+@keyframes demo-pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(58, 90, 64, 0.2); }
+  50% { box-shadow: 0 0 0 10px rgba(58, 90, 64, 0); }
+}
+
+.demo-sync-pulse {
+  animation: demo-pulse-ring 1.5s ease-in-out infinite;
+}
+
+/* Desktop fill */
+@keyframes demo-fill {
+  from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+  to { opacity: 1; transform: scaleX(1); transform-origin: left; }
+}
+
+.demo-desk-fill {
+  opacity: 0;
+  animation: demo-fill 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sidebar item */
+@keyframes demo-sidebar-pop {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.demo-sidebar-item {
+  opacity: 0;
+  animation: demo-sidebar-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Stat card pop */
+@keyframes demo-pop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.demo-stat-pop {
+  opacity: 0;
+  animation: demo-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Row slide in */
+@keyframes demo-slide {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.demo-row-slide {
+  opacity: 0;
+  animation: demo-slide 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Bar chart grow */
+@keyframes demo-bar {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to { transform: scaleY(1); transform-origin: bottom; }
+}
+
+.demo-bar-grow {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: demo-bar 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scene progress bar */
+@keyframes demo-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.demo-scene-progress {
+  animation: demo-progress 4s linear forwards;
+}

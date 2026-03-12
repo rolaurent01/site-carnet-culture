@@ -2,6 +2,7 @@ import { createMetadata } from "@/lib/metadata";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
 import FeatureSection from "@/components/features/FeatureSection";
+import AppDemo from "@/components/home/AppDemo";
 
 export const metadata = createMetadata({
   title: "Fonctionnalités",
@@ -165,6 +166,8 @@ export default function FonctionnalitesPage() {
           ))}
         </div>
       </div>
+
+      <AppDemo />
     </main>
   );
 }
