@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carnet Culture — Site vitrine
 
-## Getting Started
+Site vitrine pour **Carnet Culture**, application de gestion pour les fermes de plantes aromatiques et médicinales (PAM).
 
-First, run the development server:
+## Stack technique
+
+- **Next.js 16** avec App Router
+- **TypeScript**
+- **Tailwind CSS v4** (palette custom : sage, crème, ambre)
+- **Polices** : Fraunces (display) + DM Sans (body) via `next/font/google`
+- Aucune dépendance UI externe — animations en CSS pur + Intersection Observer
+
+## Lancer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure du projet
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                          # Pages (App Router)
+│   ├── page.tsx                  # Accueil
+│   ├── fonctionnalites/          # Page fonctionnalités
+│   ├── pour-qui/                 # Page pour qui
+│   ├── contact/                  # Page contact / démo
+│   ├── mentions-legales/         # Mentions légales
+│   ├── politique-confidentialite/# Politique de confidentialité
+│   ├── sitemap.ts                # Sitemap XML dynamique
+│   └── robots.ts                 # Robots.txt
+├── components/
+│   ├── layout/                   # Header, Footer, MobileMenu
+│   ├── ui/                       # Button, SectionTitle, Card
+│   ├── home/                     # Sections de la page d'accueil
+│   ├── features/                 # FeatureSection
+│   ├── contact/                  # ContactForm
+│   └── shared/                   # ScrollReveal, GrainOverlay
+└── lib/
+    ├── constants.ts              # URLs, config
+    └── metadata.ts               # Helpers SEO
+```
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Les URLs sont centralisées dans `src/lib/constants.ts` :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Site** : `https://carnet-culture.fr`
+- **Application** : `https://app.carnet-culture.fr`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Déployer sur Vercel
 
-## Deploy on Vercel
+1. Connecter le repo GitHub à [vercel.com](https://vercel.com)
+2. Framework preset : Next.js (détecté automatiquement)
+3. Déployer — aucune variable d'environnement requise
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+Toutes les pages sont pré-rendues en statique pour des performances optimales.
