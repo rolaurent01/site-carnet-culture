@@ -22,33 +22,28 @@ const testimonial = {
 const profiles = [
   {
     title: "Vous jonglez entre 30 variétés et 4 parcelles",
-    text: "Lavande, thym, sauge, mélisse, menthe… chaque plante a son calendrier, son séchage, son rendement. Vous avez besoin d'un outil qui comprend cette complexité sans vous la renvoyer à la figure.",
-    scene:
-      "Mardi matin, 7h. Vous partez cueillir la mélisse avant que le soleil ne tape. En trois gestes sur le téléphone, la cueillette est enregistrée — variété, parcelle, poids. Pas besoin de le noter sur un bout de papier.",
+    before: "Lavande, thym, sauge, mélisse, menthe... chaque plante a son calendrier, son séchage, son rendement. Tout est noté sur des bouts de papier ou dans des fichiers différents.",
+    after: "Mardi matin, 7h. Vous partez cueillir la mélisse. En trois gestes sur le téléphone, la cueillette est enregistrée — variété, parcelle, poids. Pas besoin de le noter sur un bout de papier.",
   },
   {
     title: "Vous séchez, triez et mettez en sachet vous-même",
-    text: "Du champ au produit fini, tout passe par vos mains. Tronçonnage, séchage, triage, mélange, conditionnement. Chaque étape transforme votre stock — et c'est là que ça se complique avec Excel.",
-    scene:
-      "Jeudi après-midi au séchoir. Vous sortez les claies de thym, vous pesez, vous triez. À chaque étape, le stock se met à jour tout seul. Plus besoin de recalculer.",
+    before: "Du champ au produit fini, tout passe par vos mains. Chaque étape transforme votre stock — et c'est là que ça se complique avec Excel. Vous recomptez, recalculez, ajustez à la main.",
+    after: "Jeudi après-midi au séchoir. Vous sortez les claies de thym, vous pesez, vous triez. À chaque étape, le stock se met à jour tout seul. Plus besoin de recalculer.",
   },
   {
     title: "Vous êtes deux ou trois, chacun sur le terrain",
-    text: "Julie cueille pendant que Thomas trie au séchoir. Chacun saisit depuis son téléphone, et le soir tout est à jour au bureau sans se concerter. Pas besoin de se passer un cahier.",
-    scene:
-      "Vendredi soir, vous ouvrez l'ordinateur. Tout ce que l'équipe a fait dans la semaine est là, classé, à jour. Vous pouvez préparer les commandes et planifier la semaine suivante.",
+    before: "Julie cueille pendant que Thomas trie au séchoir. Chacun note de son côté, et le soir il faut tout consolider au bureau. Un cahier qui passe de main en main, des oublis, des doublons.",
+    after: "Vendredi soir, vous ouvrez l'ordinateur. Tout ce que l'équipe a fait dans la semaine est là, classé, à jour. Vous pouvez préparer les commandes et planifier la semaine suivante.",
   },
   {
     title: "Vos fichiers Excel commencent à craquer",
-    text: "Un fichier pour le plan de culture, un pour le stock, un pour les lots, un pour les commandes. Des copier-coller entre onglets, des formules qui cassent, des lignes qu'on oublie de mettre à jour.",
-    scene:
-      "Vous connaissez ce moment : il faut retrouver combien il reste de lavande triée, et vous passez dix minutes à naviguer entre trois fichiers. Avec Carnet Culture, c'est une ligne sur l'écran.",
+    before: "Un fichier pour le plan de culture, un pour le stock, un pour les lots. Des copier-coller entre onglets, des formules qui cassent, des lignes qu'on oublie de mettre à jour.",
+    after: "Il faut retrouver combien il reste de lavande triée ? C'est une ligne sur l'écran. Plus de navigation entre trois fichiers pendant dix minutes.",
   },
   {
     title: "On vous demande de la traçabilité — et ça vous fait peur",
-    text: "Numéro de lot, origine des graines, fournisseur, dates de récolte et de transformation. Tout ça doit être documenté. Mais vous n'avez ni le temps ni l'envie de remplir des formulaires.",
-    scene:
-      "Bonne nouvelle : la traçabilité se construit toute seule au fil de vos saisies quotidiennes. Le jour du contrôle, vous tapez un numéro de lot et tout remonte — du sachet de graines jusqu'au produit fini.",
+    before: "Numéro de lot, origine des graines, fournisseur, dates de récolte et de transformation. Tout ça doit être documenté. Mais vous n'avez ni le temps ni l'envie de remplir des formulaires.",
+    after: "La traçabilité se construit toute seule au fil de vos saisies quotidiennes. Le jour du contrôle, vous tapez un numéro de lot et tout remonte — du sachet de graines jusqu'au produit fini.",
   },
 ];
 
@@ -99,22 +94,43 @@ export default function PourQuiPage() {
           </blockquote>
         </ScrollReveal>
 
-        {/* Profiles with scenes */}
+        {/* Profiles with avant/après */}
         <div className="space-y-8">
           {profiles.map((profile, i) => (
             <ScrollReveal key={i} stagger={Math.min(i + 1, 5)}>
-              <Card className="space-y-4">
+              <Card className="space-y-5">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-ink">
                     {profile.title}
                   </h3>
                   <ProfileIllustration index={i} />
                 </div>
-                <p className="text-ink-muted leading-relaxed">{profile.text}</p>
-                <div className="bg-cream-100 rounded-xl px-5 py-4 border-l-3 border-sage-300">
-                  <p className="text-ink text-sm leading-relaxed italic">
-                    {profile.scene}
-                  </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Avant */}
+                  <div className="rounded-xl px-5 py-4 bg-red-50/40 border border-red-200/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <svg viewBox="0 0 20 20" className="w-4 h-4 text-red-400 flex-shrink-0" aria-hidden="true">
+                        <line x1="5" y1="5" x2="15" y2="15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                        <line x1="15" y1="5" x2="5" y2="15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      </svg>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-red-400">Aujourd&apos;hui</span>
+                    </div>
+                    <p className="text-ink-muted text-sm leading-relaxed">
+                      {profile.before}
+                    </p>
+                  </div>
+                  {/* Après */}
+                  <div className="rounded-xl px-5 py-4 bg-sage-50/40 border border-sage-200/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <svg viewBox="0 0 20 20" className="w-4 h-4 text-sage-500 flex-shrink-0" aria-hidden="true">
+                        <path d="M5 10l3 3 7-7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                      </svg>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-sage-500">Avec Carnet Culture</span>
+                    </div>
+                    <p className="text-ink text-sm leading-relaxed">
+                      {profile.after}
+                    </p>
+                  </div>
                 </div>
               </Card>
             </ScrollReveal>

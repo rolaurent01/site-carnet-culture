@@ -40,7 +40,11 @@ export default function ProblemBlock() {
     <section className="py-20 md:py-28 bg-cream-100">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <ScrollReveal>
-          <SectionTitle>Vos fichiers Excel vous ralentissent.</SectionTitle>
+          <SectionTitle
+            subtitle="Des heures perdues chaque semaine à naviguer entre fichiers, recompter le stock et chercher un numéro de lot."
+          >
+            Vos fichiers Excel vous ralentissent.
+          </SectionTitle>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">

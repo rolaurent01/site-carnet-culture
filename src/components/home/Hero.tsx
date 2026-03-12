@@ -165,11 +165,11 @@ export default function Hero() {
               ))}
             </div>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Button href={APP_URL} external size="lg" variant="primary">
-                Accéder à l&apos;application
+              <Button href="/contact" size="lg" variant="primary">
+                Voir une démo gratuite
               </Button>
-              <Button href="/contact" size="lg" variant="outline">
-                Demander une démo
+              <Button href={APP_URL} external size="lg" variant="outline">
+                Accéder à l&apos;application
               </Button>
             </div>
           </div>

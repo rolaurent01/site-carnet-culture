@@ -4,23 +4,23 @@ import SectionTitle from "@/components/ui/SectionTitle";
 const benefits = [
   {
     icon: "📱",
-    text: "Saisissez sur le terrain depuis votre téléphone",
+    text: "Fini les bouts de papier : saisissez en 10 secondes sur le terrain",
   },
   {
     icon: "💻",
-    text: "Retrouvez tout au bureau, organisé et à jour",
+    text: "Ce soir au bureau, tout est déjà classé et à jour",
   },
   {
     icon: "🌱",
-    text: "Suivez votre production de la graine au sachet",
+    text: "Dès la prochaine cueillette, votre stock se met à jour tout seul",
   },
   {
-    icon: "📦",
-    text: "Gardez un stock fiable sans effort",
+    icon: "🔗",
+    text: "Le jour du contrôle, remontez un lot en 3 clics au lieu d'une heure",
   },
   {
     icon: "📤",
-    text: "Exportez vos données en un clic",
+    text: "Export Excel prêt pour votre comptable ou votre certification en un clic",
   },
 ];
 

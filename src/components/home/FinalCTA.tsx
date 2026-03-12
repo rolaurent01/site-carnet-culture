@@ -13,18 +13,21 @@ export default function FinalCTA() {
       <div className="relative mx-auto max-w-3xl px-5 md:px-8 text-center">
         <ScrollReveal>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-ink leading-tight tracking-tight mb-6">
-            Prêt à structurer votre activité ?
+            Marre de galérer avec Excel ?
           </h2>
-          <p className="text-ink-muted text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Découvrez comment Carnet Culture peut simplifier la gestion quotidienne de votre
-            ferme PAM.
+          <p className="text-ink-muted text-lg leading-relaxed mb-4 max-w-xl mx-auto">
+            On vous montre l&apos;outil en 20 minutes, avec vos plantes et vos cas concrets.
+            Gratuit, sans engagement.
+          </p>
+          <p className="text-ink-muted/60 text-sm mb-10">
+            Pas de spam, pas de relance commerciale.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href={APP_URL} external size="lg" variant="primary">
-              Accéder à l&apos;application
+            <Button href="/contact" size="lg" variant="primary">
+              Réserver ma démo gratuite
             </Button>
-            <Button href="/contact" size="lg" variant="outline">
-              Nous contacter
+            <Button href={APP_URL} external size="lg" variant="outline">
+              Accéder à l&apos;application
             </Button>
           </div>
         </ScrollReveal>

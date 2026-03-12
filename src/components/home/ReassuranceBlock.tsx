@@ -58,7 +58,7 @@ export default function ReassuranceBlock() {
           </p>
         </ScrollReveal>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-14">
           {points.map((point, i) => (
             <ScrollReveal key={i} stagger={i + 1}>
               <div className="flex items-center gap-3 bg-cream-50 rounded-2xl px-6 py-4 border border-sage-100/60 shadow-sm">
@@ -68,6 +68,20 @@ export default function ReassuranceBlock() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Social proof — testimonial */}
+        <ScrollReveal>
+          <blockquote className="relative bg-cream-50 border-l-4 border-amber-400 rounded-r-2xl px-6 py-5 md:px-8 md:py-6 max-w-2xl mx-auto">
+            <p className="text-ink italic text-base leading-relaxed">
+              &laquo;&nbsp;Avant on faisait tout papier et c&apos;était très fastidieux de devoir tout
+              refaire sur un tableau Excel, maintenant on fait tout directement sur le téléphone et cela
+              s&apos;intègre directement dans notre ordinateur accessible partout.&nbsp;&raquo;
+            </p>
+            <footer className="mt-3 text-sm text-ink-muted">
+              — <strong className="text-ink font-medium">Véronique</strong>, paysanne à Cerdon
+            </footer>
+          </blockquote>
+        </ScrollReveal>
       </div>
     </section>
   );
