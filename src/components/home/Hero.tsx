@@ -145,15 +145,25 @@ export default function Hero() {
           {/* Text */}
           <div className="max-w-xl">
             <span className="inline-block font-body text-sm font-medium text-sage-400 tracking-wider uppercase mb-6">
-              Application de gestion PAM
+              Carnet de culture agricole numérique
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-[3.4rem] font-semibold text-ink leading-[1.12] tracking-tight">
-              De la graine au produit fini, votre activité PAM dans un seul outil.
+              Le carnet numérique simple pour suivre vos cultures et votre traçabilité.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-ink-muted leading-relaxed">
               Carnet Culture remplace vos fichiers Excel par une application claire et fiable,
               pensée pour les petites fermes de plantes aromatiques et médicinales.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {["Producteurs PAM", "Maraîchers", "Transformateurs artisanaux", "Petites fermes"].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-block text-sm font-medium text-sage-500 bg-sage-100/60 border border-sage-200/60 rounded-full px-3 py-1"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Button href={APP_URL} external size="lg" variant="primary">
                 Accéder à l&apos;application

@@ -20,8 +20,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} — De la graine au produit fini`,
-    template: `%s — ${SITE_NAME}`,
+    default: `${SITE_NAME} — Carnet de culture agricole numérique`,
+    template: `%s — ${SITE_NAME} | Logiciel agricole PAM`,
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),

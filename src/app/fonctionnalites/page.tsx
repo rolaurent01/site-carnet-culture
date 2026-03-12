@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -5,11 +6,19 @@ import FeatureSection from "@/components/features/FeatureSection";
 import AppDemo from "@/components/home/AppDemo";
 
 export const metadata = createMetadata({
-  title: "Fonctionnalités",
+  title: "Fonctionnalités du logiciel agricole",
   description:
-    "Découvrez toutes les fonctionnalités de Carnet Culture : semis, parcelles, transformation, stock, pilotage et plus encore.",
+    "Découvrez toutes les fonctionnalités de Carnet Culture : suivi des cultures, traçabilité des lots, gestion des récoltes, stock ferme, transformation PAM et plus encore.",
   path: "/fonctionnalites",
 });
+
+const useCaseLinks = [
+  { label: "Suivi des cultures", href: "/fonctionnalites/suivi-cultures" },
+  { label: "Traçabilité des lots", href: "/fonctionnalites/tracabilite-lots" },
+  { label: "Gestion des récoltes", href: "/fonctionnalites/gestion-recoltes" },
+  { label: "Gestion des stocks", href: "/fonctionnalites/gestion-stock-ferme" },
+  { label: "Transformation PAM", href: "/fonctionnalites/transformation-pam" },
+];
 
 const features = [
   {
@@ -152,6 +161,21 @@ export default function FonctionnalitesPage() {
           >
             Fonctionnalités
           </SectionTitle>
+        </ScrollReveal>
+
+        {/* Use case quick links */}
+        <ScrollReveal>
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
+            {useCaseLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-block text-sm font-medium text-sage-500 bg-sage-100/60 border border-sage-200/60 rounded-full px-4 py-2 hover:bg-sage-200/60 hover:border-sage-300/60 transition-colors duration-300"
+              >
+                {link.label} →
+              </Link>
+            ))}
+          </div>
         </ScrollReveal>
 
         <div className="divide-y divide-sage-100/40">

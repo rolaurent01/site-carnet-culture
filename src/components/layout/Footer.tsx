@@ -64,7 +64,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-sage-400/30 text-center">
+        <div className="mt-14 pt-8 border-t border-sage-400/30 text-center space-y-2">
+          <p className="text-sage-200 text-xs">
+            Carnet Culture — logiciel de suivi de culture agricole pour producteurs PAM, maraîchers et transformateurs artisanaux.
+          </p>
           <p className="text-sage-300 text-xs">
             © {year} {SITE_NAME}. Tous droits réservés.
           </p>
