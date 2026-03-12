@@ -15,9 +15,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt={`${SITE_NAME} — logo`}
-                width={120}
-                height={34}
-                className="h-10 w-auto brightness-0 invert"
+                width={480}
+                height={138}
+                className="h-28 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-sage-200 text-sm leading-relaxed max-w-xs">

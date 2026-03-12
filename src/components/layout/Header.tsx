@@ -47,9 +47,9 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt={`${SITE_NAME} — logo`}
-            width={140}
-            height={40}
-            className="h-9 w-auto"
+            width={560}
+            height={160}
+            className="h-36 w-auto"
             priority
           />
         </Link>

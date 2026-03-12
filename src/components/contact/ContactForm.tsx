@@ -5,14 +5,44 @@ import Button from "@/components/ui/Button";
 import { APP_URL } from "@/lib/constants";
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("sending");
+    setErrorMsg("");
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      structure: formData.get("structure") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        const data = await res.json();
+        setErrorMsg(data.error || "Une erreur est survenue.");
+        setStatus("error");
+      }
+    } catch {
+      setErrorMsg("Impossible de contacter le serveur. Vérifiez votre connexion.");
+      setStatus("error");
+    }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="bg-cream-50 rounded-2xl border border-sage-100 p-8 md:p-12 text-center">
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-sage-100 flex items-center justify-center">
@@ -107,9 +137,15 @@ export default function ContactForm() {
           />
         </div>
 
+        {status === "error" && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+            {errorMsg}
+          </div>
+        )}
+
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <Button type="submit" variant="primary" size="lg">
-            Envoyer
+            {status === "sending" ? "Envoi en cours…" : "Envoyer"}
           </Button>
           <p className="text-xs text-ink-muted">
             Pas de spam, pas d&apos;engagement. Nous vous répondrons personnellement sous 48h.

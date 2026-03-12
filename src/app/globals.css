@@ -139,7 +139,7 @@ body {
   opacity: 0;
 }
 
-/* ── Mockup pulse dots ── */
+/* ── Mockup animations ── */
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 0.4; }
@@ -148,4 +148,103 @@ body {
 
 .animate-pulse-dot {
   animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Row highlight sweep — a subtle glow passes over a table row */
+@keyframes row-highlight {
+  0%, 100% { background-position: -200% 0; }
+  50% { background-position: 200% 0; }
+}
+
+.mockup-row-sweep {
+  background: linear-gradient(90deg, transparent 0%, rgba(88,129,87,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: row-highlight 4s ease-in-out infinite;
+}
+
+/* Badge pulse — status badges gently breathe */
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+.mockup-badge-pulse {
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+/* Sidebar item glow */
+@keyframes sidebar-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+.mockup-sidebar-glow {
+  animation: sidebar-glow 3s ease-in-out infinite;
+}
+
+/* Mobile form field fill — simulates typing */
+@keyframes field-fill {
+  0% { width: 0%; }
+  60% { width: 100%; }
+  100% { width: 100%; }
+}
+
+.mockup-field-fill {
+  animation: field-fill 3s ease-out infinite;
+}
+
+/* Button press effect */
+@keyframes btn-press {
+  0%, 85%, 100% { transform: scale(1); }
+  90% { transform: scale(0.95); }
+  95% { transform: scale(1.02); }
+}
+
+.mockup-btn-press {
+  animation: btn-press 5s ease-in-out infinite;
+}
+
+/* Fade in sequence for rows */
+@keyframes row-fade-in {
+  0%, 10% { opacity: 0; transform: translateX(-4px); }
+  20%, 100% { opacity: 1; transform: translateX(0); }
+}
+
+.mockup-row-enter-1 { animation: row-fade-in 6s ease-out infinite; }
+.mockup-row-enter-2 { animation: row-fade-in 6s ease-out 0.3s infinite; }
+.mockup-row-enter-3 { animation: row-fade-in 6s ease-out 0.6s infinite; }
+.mockup-row-enter-4 { animation: row-fade-in 6s ease-out 0.9s infinite; }
+.mockup-row-enter-5 { animation: row-fade-in 6s ease-out 1.2s infinite; }
+
+/* Cursor blink for mobile */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.mockup-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Progress bar fill */
+@keyframes progress-fill {
+  0% { width: 15%; }
+  50% { width: 85%; }
+  100% { width: 15%; }
+}
+
+.mockup-progress {
+  animation: progress-fill 4s ease-in-out infinite;
+}
+
+/* Notification pop */
+@keyframes notif-pop {
+  0%, 70%, 100% { transform: scale(0); opacity: 0; }
+  75% { transform: scale(1.2); opacity: 1; }
+  80% { transform: scale(1); opacity: 1; }
+  95% { transform: scale(1); opacity: 1; }
+}
+
+.mockup-notif {
+  animation: notif-pop 6s ease-out infinite;
 }

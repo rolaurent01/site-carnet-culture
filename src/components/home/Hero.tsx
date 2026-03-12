@@ -2,9 +2,16 @@ import Button from "@/components/ui/Button";
 import { APP_URL } from "@/lib/constants";
 
 function DesktopMockup() {
+  const rows = [
+    { name: "Lavande", qty: "3.2 kg", status: "Récolté", statusStyle: "bg-sage-200 text-sage-700" },
+    { name: "Thym", qty: "1.8 kg", status: "Séchage", statusStyle: "bg-amber-400/30 text-amber-600" },
+    { name: "Sauge", qty: "0.9 kg", status: "Stock", statusStyle: "bg-sage-100 text-sage-500" },
+    { name: "Menthe", qty: "2.1 kg", status: "Récolté", statusStyle: "bg-sage-200 text-sage-700" },
+    { name: "Romarin", qty: "4.5 kg", status: "Séchage", statusStyle: "bg-amber-400/30 text-amber-600" },
+  ];
+
   return (
     <div className="relative w-full max-w-md mx-auto">
-      {/* Desktop frame */}
       <div className="bg-cream-50 rounded-2xl shadow-xl border border-sage-100 overflow-hidden">
         {/* Browser bar */}
         <div className="flex items-center gap-2 px-4 py-3 bg-cream-300 border-b border-sage-100">
@@ -16,12 +23,14 @@ function DesktopMockup() {
         {/* App content */}
         <div className="flex min-h-[220px]">
           {/* Sidebar */}
-          <div className="w-16 bg-sage-500 p-3 flex flex-col gap-3">
-            <div className="w-full h-6 rounded bg-sage-400/50" />
-            <div className="w-full h-6 rounded bg-sage-400/30" />
-            <div className="w-full h-6 rounded bg-amber-400/50" />
-            <div className="w-full h-6 rounded bg-sage-400/30" />
-            <div className="w-full h-6 rounded bg-sage-400/30" />
+          <div className="w-16 bg-sage-500 p-3 flex flex-col gap-3 relative">
+            <div className="w-full h-6 rounded bg-sage-400/50 mockup-sidebar-glow" style={{ animationDelay: "0s" }} />
+            <div className="w-full h-6 rounded bg-sage-400/30 mockup-sidebar-glow" style={{ animationDelay: "0.5s" }} />
+            <div className="w-full h-6 rounded bg-amber-400/50 mockup-sidebar-glow" style={{ animationDelay: "1s" }} />
+            <div className="w-full h-6 rounded bg-sage-400/30 mockup-sidebar-glow" style={{ animationDelay: "1.5s" }} />
+            <div className="w-full h-6 rounded bg-sage-400/30 mockup-sidebar-glow" style={{ animationDelay: "2s" }} />
+            {/* Notification dot */}
+            <div className="absolute top-3 right-2 w-2 h-2 rounded-full bg-amber-400 mockup-notif" />
           </div>
           {/* Main area */}
           <div className="flex-1 p-4 space-y-3">
@@ -30,23 +39,29 @@ function DesktopMockup() {
               <div className="h-5 w-16 rounded bg-amber-400/30" />
               <div className="h-5 w-24 rounded bg-sage-100" />
             </div>
-            {/* Table mockup */}
-            <div className="space-y-2 mt-3">
-              {[0.9, 0.7, 0.5, 0.8, 0.6].map((opacity, i) => (
-                <div key={i} className="flex gap-2 items-center">
-                  <div className="w-3 h-3 rounded-full bg-sage-400" style={{ opacity }} />
-                  <div className="h-4 rounded bg-sage-100/80 flex-1" style={{ opacity }} />
-                  <div className="h-4 w-12 rounded bg-cream-300" />
+            {/* Progress bar */}
+            <div className="h-2 w-full rounded-full bg-sage-100 overflow-hidden">
+              <div className="h-full rounded-full bg-sage-400/60 mockup-progress" />
+            </div>
+            {/* Table rows */}
+            <div className="space-y-2 mt-2">
+              {rows.map((row, i) => (
+                <div
+                  key={i}
+                  className={`flex gap-2 items-center mockup-row-sweep mockup-row-enter-${i + 1} rounded-md px-1 py-0.5`}
+                >
+                  <div className="w-3 h-3 rounded-full bg-sage-400 animate-pulse-dot" style={{ animationDelay: `${i * 0.4}s` }} />
+                  <div className="h-4 rounded bg-sage-100/80 flex-1 flex items-center px-1">
+                    <span className="text-[7px] text-ink-muted">{row.name}</span>
+                  </div>
+                  <div className="h-4 w-12 rounded bg-cream-300 flex items-center justify-center">
+                    <span className="text-[6px] text-ink-muted">{row.qty}</span>
+                  </div>
                   <div
-                    className={`h-4 w-14 rounded text-[8px] flex items-center justify-center font-semibold ${
-                      i % 3 === 0
-                        ? "bg-sage-200 text-sage-700"
-                        : i % 3 === 1
-                        ? "bg-amber-400/30 text-amber-600"
-                        : "bg-sage-100 text-sage-500"
-                    }`}
+                    className={`h-4 w-14 rounded text-[8px] flex items-center justify-center font-semibold mockup-badge-pulse ${row.statusStyle}`}
+                    style={{ animationDelay: `${i * 0.6}s` }}
                   >
-                    {i % 3 === 0 ? "Récolté" : i % 3 === 1 ? "Séchage" : "Stock"}
+                    {row.status}
                   </div>
                 </div>
               ))}
@@ -61,7 +76,6 @@ function DesktopMockup() {
 function MobileMockup() {
   return (
     <div className="relative w-32 md:w-36">
-      {/* Mobile frame */}
       <div className="bg-cream-50 rounded-3xl shadow-xl border border-sage-100 overflow-hidden">
         {/* Notch */}
         <div className="flex justify-center py-2">
@@ -73,17 +87,23 @@ function MobileMockup() {
             <span className="text-cream-50 text-[7px] font-semibold">Saisie terrain</span>
           </div>
           <div className="space-y-2">
-            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2">
+            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2 relative overflow-hidden mockup-row-enter-1">
               <span className="text-[7px] text-ink-muted">🌿 Lavande fine</span>
+              <span className="absolute right-2 w-[2px] h-4 bg-sage-500 mockup-cursor" />
             </div>
-            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2">
+            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2 mockup-row-enter-2">
               <span className="text-[7px] text-ink-muted">📋 Cueillette</span>
             </div>
-            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2">
-              <span className="text-[7px] text-ink-muted">⚖️ 2.4 kg</span>
+            <div className="h-8 rounded-lg bg-cream-300 flex items-center px-2 mockup-row-enter-3">
+              <div className="flex items-center gap-1">
+                <span className="text-[7px] text-ink-muted">⚖️</span>
+                <div className="h-3 rounded bg-sage-200 overflow-hidden w-12">
+                  <div className="h-full bg-sage-400/50 mockup-field-fill" />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="h-8 rounded-lg bg-sage-500 flex items-center justify-center">
+          <div className="h-8 rounded-lg bg-sage-500 flex items-center justify-center mockup-btn-press">
             <span className="text-cream-50 text-[7px] font-semibold">Enregistrer</span>
           </div>
         </div>
