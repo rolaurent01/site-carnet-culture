@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS, APP_URL, SITE_NAME } from "@/lib/constants";
@@ -10,6 +11,7 @@ import MobileMenu from "./MobileMenu";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -55,15 +57,23 @@ export default function Header() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-ink-light text-sm font-medium hover:text-sage-500 transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-amber-400 after:transition-all after:duration-300 ${
+                  isActive
+                    ? "text-sage-500 after:w-full"
+                    : "text-ink-light hover:text-sage-500 after:w-0 hover:after:w-full"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <Button href={APP_URL} external size="sm" variant="primary">
             Accéder à l&apos;application
           </Button>

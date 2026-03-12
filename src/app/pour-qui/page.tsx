@@ -3,6 +3,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import ProfileIllustration from "./ProfileIllustrations";
 
 export const metadata = createMetadata({
   title: "Pour qui",
@@ -11,20 +12,12 @@ export const metadata = createMetadata({
   path: "/pour-qui",
 });
 
-const testimonials = [
-  {
-    quote:
-      "On était trois à noter nos cueillettes sur des bouts de papier, puis on recopiait tout dans Excel le soir. On perdait des données chaque semaine.",
-    author: "Marie",
-    role: "Herboriste paysanne en Drôme",
-  },
-  {
-    quote:
-      "Le jour où j'ai dû retrouver la traçabilité d'un lot de tisane pour un contrôle, j'ai passé une demi-journée dans mes classeurs. Plus jamais.",
-    author: "Antoine",
-    role: "Producteur-transformateur dans le Lot",
-  },
-];
+const testimonial = {
+  quote:
+    "Avant on faisait tout papier et c'était très fastidieux de devoir tout refaire sur un tableau Excel, maintenant on fait tout directement sur le téléphone et cela s'intègre directement dans notre ordinateur accessible partout.",
+  author: "Véronique",
+  role: "Paysanne à Cerdon",
+};
 
 const profiles = [
   {
@@ -68,7 +61,25 @@ const notForYou = [
 
 export default function PourQuiPage() {
   return (
-    <main className="pt-28 pb-20">
+    <main className="pt-28 pb-20 relative overflow-hidden">
+      {/* Decorative background foliage */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none -z-10" aria-hidden="true">
+        <svg viewBox="0 0 500 500" fill="none" className="w-full h-full animate-float-slow">
+          <path d="M420 80 C380 120, 340 100, 300 140 C260 180, 280 220, 240 260" stroke="#3A5A40" strokeWidth="2" opacity="0.04" fill="none" />
+          <path d="M350 60 C340 90, 320 80, 310 110 C300 140, 310 160, 290 180" stroke="#588157" strokeWidth="1.5" opacity="0.04" fill="none" />
+          <ellipse cx="380" cy="120" rx="40" ry="25" fill="#3A5A40" opacity="0.03" transform="rotate(-30 380 120)" />
+          <ellipse cx="320" cy="180" rx="35" ry="20" fill="#588157" opacity="0.03" transform="rotate(15 320 180)" />
+          <ellipse cx="400" cy="200" rx="50" ry="30" fill="#7DA27D" opacity="0.025" transform="rotate(-20 400 200)" />
+          <ellipse cx="280" cy="100" rx="30" ry="18" fill="#3A5A40" opacity="0.03" transform="rotate(25 280 100)" />
+        </svg>
+      </div>
+      <div className="absolute bottom-20 left-0 w-[400px] h-[400px] pointer-events-none -z-10" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" className="w-full h-full animate-float">
+          <ellipse cx="80" cy="300" rx="60" ry="35" fill="#588157" opacity="0.025" transform="rotate(10 80 300)" />
+          <ellipse cx="150" cy="250" rx="45" ry="25" fill="#3A5A40" opacity="0.03" transform="rotate(-15 150 250)" />
+          <path d="M60 320 C80 280, 100 300, 120 260" stroke="#3A5A40" strokeWidth="1.5" opacity="0.04" fill="none" />
+        </svg>
+      </div>
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <ScrollReveal>
           <SectionTitle subtitle="Si votre quotidien ressemble à ce qui suit, on a construit cet outil pour vous.">
@@ -76,14 +87,14 @@ export default function PourQuiPage() {
           </SectionTitle>
         </ScrollReveal>
 
-        {/* Opening testimonial */}
+        {/* Testimonial */}
         <ScrollReveal>
           <blockquote className="relative bg-sage-500/[0.04] border-l-4 border-amber-400 rounded-r-2xl px-6 py-5 md:px-8 md:py-6 mb-14">
             <p className="text-ink italic text-lg leading-relaxed">
-              &laquo;&nbsp;{testimonials[0].quote}&nbsp;&raquo;
+              &laquo;&nbsp;{testimonial.quote}&nbsp;&raquo;
             </p>
             <footer className="mt-3 text-sm text-ink-muted">
-              — <strong className="text-ink font-medium">{testimonials[0].author}</strong>, {testimonials[0].role}
+              — <strong className="text-ink font-medium">{testimonial.author}</strong>, {testimonial.role}
             </footer>
           </blockquote>
         </ScrollReveal>
@@ -93,9 +104,12 @@ export default function PourQuiPage() {
           {profiles.map((profile, i) => (
             <ScrollReveal key={i} stagger={Math.min(i + 1, 5)}>
               <Card className="space-y-4">
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-ink">
-                  {profile.title}
-                </h3>
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-ink">
+                    {profile.title}
+                  </h3>
+                  <ProfileIllustration index={i} />
+                </div>
                 <p className="text-ink-muted leading-relaxed">{profile.text}</p>
                 <div className="bg-cream-100 rounded-xl px-5 py-4 border-l-3 border-sage-300">
                   <p className="text-ink text-sm leading-relaxed italic">
@@ -106,18 +120,6 @@ export default function PourQuiPage() {
             </ScrollReveal>
           ))}
         </div>
-
-        {/* Second testimonial */}
-        <ScrollReveal>
-          <blockquote className="relative bg-sage-500/[0.04] border-l-4 border-amber-400 rounded-r-2xl px-6 py-5 md:px-8 md:py-6 mt-14 mb-14">
-            <p className="text-ink italic text-lg leading-relaxed">
-              &laquo;&nbsp;{testimonials[1].quote}&nbsp;&raquo;
-            </p>
-            <footer className="mt-3 text-sm text-ink-muted">
-              — <strong className="text-ink font-medium">{testimonials[1].author}</strong>, {testimonials[1].role}
-            </footer>
-          </blockquote>
-        </ScrollReveal>
 
         {/* What we DON'T do */}
         <ScrollReveal>
