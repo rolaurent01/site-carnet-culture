@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Button from "@/components/ui/Button";
+import FeatureNav from "@/components/features/FeatureNav";
 
 export const metadata = createMetadata({
   title: "Suivi des cultures agricoles",
@@ -38,12 +38,7 @@ export default function SuiviCulturesPage() {
   return (
     <main className="pt-header pb-20">
       <div className="mx-auto max-w-4xl px-5 md:px-8">
-        <Link
-          href="/fonctionnalites"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-sage-400 hover:text-sage-500 transition-colors mb-8"
-        >
-          <span aria-hidden="true">&larr;</span> Fonctionnalités
-        </Link>
+        <FeatureNav />
         <ScrollReveal>
           <SectionTitle
             subtitle="Centralisez le suivi de toutes vos cultures dans un seul outil. De la graine à la récolte, chaque étape est enregistrée et traçable."
