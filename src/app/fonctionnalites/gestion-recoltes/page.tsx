@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -37,6 +38,12 @@ export default function GestionRecoltesPage() {
   return (
     <main className="pt-header pb-20">
       <div className="mx-auto max-w-4xl px-5 md:px-8">
+        <Link
+          href="/fonctionnalites"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-sage-400 hover:text-sage-500 transition-colors mb-8"
+        >
+          <span aria-hidden="true">&larr;</span> Fonctionnalités
+        </Link>
         <ScrollReveal>
           <SectionTitle
             subtitle="Enregistrez vos récoltes sur le terrain et retrouvez-les instantanément au bureau. Tout est synchronisé, rien n'est perdu."

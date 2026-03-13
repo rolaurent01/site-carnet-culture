@@ -24,7 +24,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
     >
       <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-8">
         {NAV_LINKS.map((link, i) => {
-          const isActive = pathname === link.href;
+          const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
           return (
             <Link
               key={link.href}
