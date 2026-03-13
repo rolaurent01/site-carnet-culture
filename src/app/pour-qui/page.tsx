@@ -56,7 +56,7 @@ const notForYou = [
 
 export default function PourQuiPage() {
   return (
-    <main className="pt-40 pb-20 relative overflow-hidden">
+    <main className="pt-header pb-20 relative overflow-hidden">
       {/* Decorative background foliage */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none -z-10" aria-hidden="true">
         <svg viewBox="0 0 500 500" fill="none" className="w-full h-full animate-float-slow">

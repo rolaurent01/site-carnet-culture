@@ -35,7 +35,7 @@ const steps = [
 
 export default function GestionStockPage() {
   return (
-    <main className="pt-40 pb-20">
+    <main className="pt-header pb-20">
       <div className="mx-auto max-w-4xl px-5 md:px-8">
         <ScrollReveal>
           <SectionTitle

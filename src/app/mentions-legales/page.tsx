@@ -10,7 +10,7 @@ export const metadata = createMetadata({
 
 export default function MentionsLegalesPage() {
   return (
-    <main className="pt-40 pb-20">
+    <main className="pt-header pb-20">
       <div className="mx-auto max-w-3xl px-5 md:px-8">
         <ScrollReveal>
           <SectionTitle>Mentions légales</SectionTitle>

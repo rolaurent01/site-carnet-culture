@@ -114,7 +114,7 @@ function MobileMockup() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-header pb-16">
       {/* Decorative SVG shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <svg

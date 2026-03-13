@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +12,14 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+
+  const syncHeight = useCallback(() => {
+    if (headerRef.current) {
+      const h = headerRef.current.offsetHeight;
+      document.documentElement.style.setProperty("--header-h", `${h}px`);
+    }
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -19,6 +27,12 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    syncHeight();
+    window.addEventListener("resize", syncHeight, { passive: true });
+    return () => window.removeEventListener("resize", syncHeight);
+  }, [scrolled, syncHeight]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -33,6 +47,7 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled ? "header-solid py-3" : "bg-transparent py-5"
       }`}
@@ -51,7 +66,7 @@ export default function Header() {
             alt={`${SITE_NAME} — logo`}
             width={560}
             height={160}
-            className="h-36 w-auto"
+            className="h-20 sm:h-24 md:h-36 w-auto"
             priority
           />
         </Link>

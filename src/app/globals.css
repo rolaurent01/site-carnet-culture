@@ -104,6 +104,12 @@ body {
   animation: float-slow 8s ease-in-out infinite;
 }
 
+/* ── Dynamic header spacing ── */
+
+.pt-header {
+  padding-top: calc(var(--header-h, 10rem) + 2rem);
+}
+
 /* ── Focus styles ── */
 
 *:focus-visible {
