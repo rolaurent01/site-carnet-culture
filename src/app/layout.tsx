@@ -4,6 +4,7 @@ import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/constants";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import GrainOverlay from "@/components/shared/GrainOverlay";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
