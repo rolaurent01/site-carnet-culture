@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE_NAME, SITE_TAGLINE, NAV_LINKS, FOOTER_LEGAL_LINKS } from "@/lib/constants";
+import { CreditDonkey } from "@/components/layout/CreditDonkey";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -64,13 +65,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-sage-400/30 text-center space-y-2">
+        <div className="mt-14 pt-8 border-t border-sage-400/30 text-center space-y-2 [--dc-credit-taille:0.75rem]">
           <p className="text-sage-200 text-xs">
             Carnet Culture — logiciel de suivi de culture agricole pour producteurs PAM, maraîchers et transformateurs artisanaux.
           </p>
           <p className="text-sage-300 text-xs">
             © {year} {SITE_NAME}. Tous droits réservés.
           </p>
+          <CreditDonkey slug="carnet-culture" variante="monogramme-blanc" />
         </div>
       </div>
     </footer>
