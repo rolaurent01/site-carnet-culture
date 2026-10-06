@@ -31,6 +31,19 @@
 
 /* ── Base ── */
 
+/* Le site n'a pas de mode sombre : empêcher Chrome Android, l'appli Google
+   et Dark Reader de l'assombrir d'office. */
+:root {
+  color-scheme: only light;
+}
+
+input,
+textarea,
+select {
+  color-scheme: only light;
+  color: var(--color-ink);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -41,6 +54,15 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mêmes couleurs qu'en mode clair : Samsung Internet y voit un site qui gère
+   lui-même le mode sombre, et ne le repeint plus. Ne change rien à l'écran. */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-cream-200);
+    color: var(--color-ink);
+  }
 }
 
 ::selection {

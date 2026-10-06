@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/constants";
 import Header from "@/components/layout/Header";
@@ -43,6 +43,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Dark Reader ignore color-scheme mais respecte cette balise. Next n'écrit pas
+  // une balise au contenu vide : la valeur est indifférente pour Dark Reader.
+  other: {
+    "darkreader-lock": "true",
+  },
+};
+
+// Le site n'a pas de mode sombre : Chrome Android et l'appli Google ne doivent pas l'assombrir d'office.
+export const viewport: Viewport = {
+  colorScheme: "only light",
 };
 
 export default function RootLayout({
